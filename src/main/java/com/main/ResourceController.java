@@ -3,12 +3,13 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.main.models.Employee;
 import com.main.models.Entity;
-
+//@CrossOrigin(origins = "*")//controller level configuring.
 @RestController
 public class ResourceController {
 	

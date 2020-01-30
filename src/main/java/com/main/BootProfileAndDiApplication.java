@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.main.models.Entity;
 
@@ -24,5 +26,19 @@ public class BootProfileAndDiApplication {
 	@Profile("test")
 	public Entity testEntity() {
 		return new Entity("test");
+	}
+	
+	
+	
+	// added CORS policy globally
+	@Bean
+	public WebMvcConfigurer configure() {
+		System.out.println("adasdsadas");
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
+			}
+		};
 	}
 }
